@@ -1,0 +1,16 @@
+# Inside Log insights
+
+-- 1. From the Select up to 50 log groups:
+Select /aws/redshift/labnamespace/useractivitylog.
+Select /aws/redshift/labnamespace/connectionlog.
+Select /aws/redshift/labnamespace/userlog.
+
+In the CloudWatch Logs Insights query editor window,
+query to view the latest 50 labworkgrp logs for different database users.
+
+fields @timestamp, @message,@logStream
+| filter @message like /dbadmin/ or @message like /jane_doe/ or @message like /mary_major/
+| sort @timestamp desc
+
+
+
